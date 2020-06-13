@@ -40,7 +40,7 @@ router.put('/:id', async (req, res) => {
 } );
 
 router.delete('/:id', async (req, res) => {
-    const customer = await Customer.validate(req.params.id);
+    const customer = await Customer.findByIdAndRemove(req.params.id);
     if ( !customer) return res.status(404).send("requested id is not present");
     res.send(customer);
     
