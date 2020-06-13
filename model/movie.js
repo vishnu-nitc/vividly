@@ -34,11 +34,10 @@ const Movie = new mongoose.model('Movies', new mongoose.Schema({
 function validateMovie(movie){
     const schema = {
         title : Joi.string().min(5).max(50).required(),
-        genreId : Joi.string().required(), // client need to send id of genre , but mongoose has genre.becuase model is embedding genre 
+        genreId : Joi.objectId().required(), // client need to send id of genre , but mongoose has genre.becuase model is embedding genre 
         numberInStock : Joi.number().min(0).required(),
         dailyRentalRate : Joi.number().min(0).required()
     };
-    console.log('In validate')
     return Joi.validate(movie, schema);
 }
 
