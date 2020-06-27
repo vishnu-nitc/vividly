@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const wiston = require('winston');
+const config = require('config');
 module.exports = function () {
-    mongoose.connect('mongodb://localhost/vividly')
-    .then(() => wiston.info('Connected to mongoose'));
+    const db =config.get('db');
+    mongoose.connect(db)
+    .then(() => wiston.info(`Connected to ${db}...`));
 }
