@@ -2,7 +2,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 
 
-module.exports = funnction(app) {
+module.exports = function (app) {
     app.use(helmet());
     app.use(compression());
-}
+};
